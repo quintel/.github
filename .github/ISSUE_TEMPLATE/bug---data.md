@@ -2,7 +2,7 @@
 name: Bug - Data
 about: Report a bug related to data processing, quality, or integrity
 title: "[BUG - Data]"
-labels: bug
+type: Bug
 assignees: ''
 
 ---
