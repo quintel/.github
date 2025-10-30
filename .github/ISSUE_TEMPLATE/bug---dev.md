@@ -1,50 +1,19 @@
 ---
 name: Bug - Dev
 about: Report a bug related to development issues
-title: "[BUG - Dev]"
-labels: bug
+title: ""
+type: Bug
 assignees: ''
 
 ---
 
 ## Bug Description
 
-> Describe the dev issue...
+> What is the issue, where does it occur, screenshots...
 
 ---
 
-## Where is it happening
-
-> List affected environments, servers, or services...
-
----
-
-## Type of Issue
-What type of dev issue is this?
-Select all that apply:
-
-- [ ] User Experience
-- [ ] Unintuitive design
-- [ ] Calculation
-- [ ] API
-- [ ] Tests
-- [ ] Other
-
----
-
-## Expected Behaviour
-
-> Expected dev behaviour...
-
----
-
-## Current Behaviour
-
-> Current dev behaviour
-
----
-
-## Steps to Reproduce
+### Steps to Reproduce
 
 > Modify the steps to fit your case
 
@@ -54,13 +23,13 @@ Select all that apply:
 
 ---
 
-## Impact
+## Expected interaction
+What is the expected behaviour?
 
-> Describe the impact...
+> What would you think should be happening, describe or alter a screenshot
 
 ---
 
-## Additional Context
-Add any other context about the problem here.
+### Proposed solutions
 
-> Any additional information...
+> What do you think is causing the issue, or what do you think might solve it?

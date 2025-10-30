@@ -1,49 +1,19 @@
 ---
 name: Bug - Mod
 about: Report a bug related to modelling issues
-title: "[BUG - Mod]"
-labels: bug
+title: ""
+type: Bug
 assignees: ''
 
 ---
 
 ## Bug Description
 
-> Describe the modelling issue...
+> What is the issue, where does it occur, screenshots...
 
 ---
 
-## Where is it happening
-
-> List affected environments, servers, or services...
-
----
-
-## Type of Issue
-What type of modelling issue is this?
-Select all that apply:
-
-- [ ] Calculation
-- [ ] Graph
-- [ ] Input
-- [ ] Chart
-- [ ] Other
-
----
-
-## Expected Behaviour
-
-> Expected modelling behaviour...
-
----
-
-## Current Behaviour
-
-> Current modelling behaviour
-
----
-
-## Steps to Reproduce
+### Steps to Reproduce
 
 > Modify the steps to fit your case
 
@@ -51,15 +21,12 @@ Select all that apply:
 2. Go to node Z
 3. Observe issue
 
----
+## Expected Behaviour
 
-## Impact
-
-> Describe the impact...
+> Expected behaviour...
 
 ---
 
-## Additional Context
-Add any other context about the problem here.
+## Proposed solutions
 
-> Any additional information...
+> What do you think is causing the issue, or what do you think might solve it?
