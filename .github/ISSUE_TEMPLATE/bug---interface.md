@@ -1,16 +1,15 @@
 ---
 name: Bug - Interface
 about: Report a bug related to an interface issue
-title: "[BUG - Interface]"
+title: ""
 type: Bug
 assignees: ''
 
 ---
 
 ## Bug Description
-A clear and concise description of what the interface bug is.
 
-> Describe the data issue...
+> What is the issue, where does it occur, screenshots...
 
 ---
 
@@ -22,16 +21,13 @@ steps, please attach multiple screenshots
 
 ---
 
-## Type of Interface Issue
-What type of interface issue is this?
-Select all that apply:
+### Steps to Reproduce
 
-- [ ] Spelling Mistake
-- [ ] Broken links
-- [ ] Interface Quality
-- [ ] Interface Bug / Visual bug
-- [ ] Unexpected Behaviour
-- [ ] Other
+> Modify the steps to fit your case
+
+1. Set input X to Y
+2. Go to node Z
+3. Observe issue
 
 ---
 
@@ -42,19 +38,6 @@ What is the expected behaviour?
 
 ---
 
-## Steps to Reproduce
-Steps to reproduce the issue if not already clear from the screenshots.
+### Proposed solutions
 
-Example:
-1. Start scenario '...'
-2. Open chart '...'
-3. Cannot distinguish two colors, dutch translation is missing.
-
-> Add or modify steps as needed.
-
----
-
-## Additional Context
-Add any other context about the problem here.
-
-> Any additional information...
+> What do you think is causing the issue, or what do you think might solve it?

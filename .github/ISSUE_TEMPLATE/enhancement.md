@@ -1,7 +1,7 @@
 ---
 name: Enhancement
 about: Suggest an improvement to existing functionality
-title: "[Enhancement] - "
+title: ""
 type: Enhancement
 assignees: ''
 
@@ -9,33 +9,7 @@ assignees: ''
 
 ## Description
 
-> **Describe the enhancement here...**
-
----
-
-### Enhancement Type
-What type of enhancement is this?
-
-- [ ] Performance Improvement
-- [ ] User Experience
-- [ ] Code Quality
-- [ ] Documentation
-- [ ] Error Handling
-- [ ] Accessibility
-- [ ] Security
-- [ ] Maintainability
-- [ ] Other
-
----
-
-### Priority
-How important is this enhancement?
-
-- [ ] Nice to have
-- [ ] Low
-- [ ] Medium
-- [ ] High
-- [ ] Critical
+> **Describe the enhancement here, what is the motivation...**
 
 ---
 
@@ -51,29 +25,9 @@ How important is this enhancement?
 
 ---
 
-
-## Motivation
-
-> **Explain the motivation and benefits...**
-
----
-
-### Affected Components
-
-> **List affected components...**
-
----
-
 ## Implementation Ideas
 
 > **Describe potential implementation approaches...**
-
----
-
-### Considerations
-
-> **Describe any potential breaking changes or other considerations...**
-
 
 ---
 
@@ -82,9 +36,3 @@ How important is this enhancement?
 > **How would you measure the success of this enhancement?**
 
 - [ ]
-
----
-
-### Additional Context
-
-> **Any additional information...**
