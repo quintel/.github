@@ -1,7 +1,8 @@
 name: "Interface Bug Report"
 description: Report a visual or interaction bug in the user interface
-title: ""
+title: "my bug"
 type: bug
+projects: "quintel/projects/17"
 labels: ["ui"]
 assignees: []
 body:
