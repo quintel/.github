@@ -18,6 +18,17 @@ body:
       description: "Briefly describe what's wrong (e.g. 'Values misaligned on dashboard')."
       placeholder: "Short and clear summary"
 
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "Urgency / Impact"
+      description: "How severe is the issue?"
+      options:
+        - Minor (cosmetic, typo)
+        - Moderate (annoying but usable)
+        - Critical (blocks usage or breaks workflow)
+      default: 1
+
   - type: textarea
     id: description
     attributes:
@@ -29,13 +40,6 @@ body:
         - Actual: Button overlaps with the footer when scrolling
     validations:
       required: true
-
-  - type: input
-    id: url
-    attributes:
-      label: "URL or Screen"
-      description: "Where did you notice this issue? (e.g. specific page, modal, or component)"
-      placeholder: "https://my.energytransitionmodel.com"
 
   - type: textarea
     id: steps
@@ -49,16 +53,12 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: urgency
+  - type: input
+    id: url
     attributes:
-      label: "Urgency / Impact"
-      description: "How severe is the issue?"
-      options:
-        - Minor (cosmetic, typo)
-        - Moderate (annoying but usable)
-        - Critical (blocks usage or breaks workflow)
-      default: 1
+      label: "URL or Screen"
+      description: "Where did you notice this issue? (e.g. specific page, modal, or component)"
+      placeholder: "https://my.energytransitionmodel.com"
 
   - type: textarea
     id: screenshot
