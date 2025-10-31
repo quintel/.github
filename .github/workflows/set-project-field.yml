@@ -25,75 +25,89 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const projectNumber = 17
             const org = 'quintel'
-
+            const projectNumber = 17
             const issueNumber = '${{ inputs.issue_number }}'
             const repoName = '${{ inputs.repo_name }}'
             const body = `${{ inputs.issue_body }}`
 
-            // Try to find urgency selection
+            // --- Parse urgency ---
             const match = body.match(/###\s*Urgency \/ Impact\s*\n\s*(.+)/i)
             if (!match) {
-              console.log('No urgency found in issue body.')
+              console.log('No urgency found in issue body. Skipping project update.')
               return
             }
-            const urgency = match[1].trim()
-            console.log(`Found urgency: ${urgency}`)
+            const urgencyLabel = match[1].trim()
+            console.log(`Found urgency: ${urgencyLabel}`)
 
-            // Get project by number
-            const { data: projects } = await github.graphql(`
-              query($org: String!) {
-                organization(login: $org) {
-                  projectsV2(first: 50) {
-                    nodes { id, number, title }
-                  }
-                }
-              }
-            `, { org })
-
-            const project = projects.organization.projectsV2.nodes.find(p => p.number === projectNumber)
-            if (!project) throw new Error('Project not found.')
-
-            // Get the field ID for "Urgency"
+            // --- Fetch project #17 directly ---
             const { organization } = await github.graphql(`
-              query($org: String!, $pid: ID!) {
+              query($org: String!, $number: Int!) {
                 organization(login: $org) {
-                  projectV2(id: $pid) {
+                  projectV2(number: $number) {
+                    id
+                    title
                     fields(first: 50) {
-                      nodes { id, name }
+                      nodes {
+                        id
+                        name
+                        settings
+                      }
                     }
                   }
                 }
               }
-            `, { org, pid: project.id })
+            `, { org, number: projectNumber })
 
-            const field = organization.projectV2.fields.nodes.find(f => f.name === "Urgency")
+            const project = organization.projectV2
+            if (!project) throw new Error(`Project #${projectNumber} not found.`)
+
+            // --- Find Urgency field ---
+            const field = project.fields.nodes.find(f => f.name === "Urgency")
             if (!field) throw new Error('Urgency field not found.')
 
-            // Add the issue to the project
+            // --- Parse single-select options ---
+            const options = JSON.parse(field.settings).options
+            const option = options.find(o => o.name === urgencyLabel)
+            if (!option) throw new Error(`No matching single-select option for "${urgencyLabel}"`)
+            const optionId = option.id
+
+            // --- Convert issue number to Node ID ---
+            const { repository } = await github.graphql(`
+              query($owner: String!, $name: String!, $issueNumber: Int!) {
+                repository(owner: $owner, name: $name) {
+                  issue(number: $issueNumber) {
+                    id
+                  }
+                }
+              }
+            `, { owner: org, name: repoName, issueNumber })
+
+            const issueNodeId = repository.issue.id
+
+            // --- Add the issue to the project ---
             const { addItem } = await github.graphql(`
-              mutation($project: ID!, $issue: ID!) {
-                addProjectV2ItemById(input: {projectId: $project, contentId: $issue}) {
+              mutation($projectId: ID!, $contentId: ID!) {
+                addProjectV2ItemById(input: { projectId: $projectId, contentId: $contentId }) {
                   item { id }
                 }
               }
-            `, { project: project.id, issue: issue.node_id })
+            `, { projectId: project.id, contentId: issueNodeId })
 
-            // Set the project field value
+            const projectItemId = addItem.addProjectV2ItemById.item.id
+
+            // --- Set the Urgency field ---
             await github.graphql(`
-              mutation($item: ID!, $field: ID!, $value: String!) {
+              mutation($itemId: ID!, $fieldId: ID!, $optionId: ID!) {
                 updateProjectV2ItemFieldValue(input: {
                   projectId: "${project.id}",
-                  itemId: $item,
-                  fieldId: $field,
-                  value: { singleSelectOptionId: $value }
+                  itemId: $itemId,
+                  fieldId: $fieldId,
+                  value: { singleSelectOptionId: $optionId }
                 }) {
                   projectV2Item { id }
                 }
               }
-            `, {
-              item: addItem.addProjectV2ItemById.item.id,
-              field: field.id,
-              value: urgency
-            })
+            `, { itemId: projectItemId, fieldId: field.id, optionId })
+
+            console.log('Issue added to Project #17 and urgency field set successfully.')
