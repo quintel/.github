@@ -33,7 +33,7 @@ jobs:
             const body = `${{ inputs.issue_body }}`
 
             // Try to find urgency selection
-            const match = body.match(/Urgency \/ Impact\s*\*\*([^\n]*)\*\*/i)
+            const match = body.match(/###\s*Urgency \/ Impact\s*\n\s*(.+)/i)
             if (!match) {
               console.log('No urgency found in issue body.')
               return
