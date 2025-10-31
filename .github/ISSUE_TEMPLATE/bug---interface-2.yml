@@ -9,6 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
+        ---
         ### Enter issue information
         Thanks for reporting a UI issue! Please fill out the details below so we can fix it quickly.
 
@@ -56,7 +57,9 @@ body:
 
   - type: markdown
     attributes:
-      value: "### Optional context"
+      value: |
+        ---
+        ### Optional context
 
   - type: input
     id: url
