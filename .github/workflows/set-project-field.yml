@@ -10,20 +10,22 @@ on:
       repo_name:
         required: true
         type: string
+      # issue_body:
+      #   required: true
+      #   type: string
 
 jobs:
   sync-urgency:
     runs-on: ubuntu-latest
     permissions:
       issues: read
-      projects: write
     steps:
       - name: Extract urgency and update project field
         uses: actions/github-script@v7
         with:
           script: |
             const projectNumber = 17
-            const org = 'quintel'
+            const org = 'my-org'
             const issue = context.payload.issue
             const body = issue.body || ''
 
