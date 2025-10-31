@@ -1,0 +1,94 @@
+# .github/workflows/set-project-field.yml
+name: Sync Urgency to Project Field
+
+on:
+  workflow_call:
+    inputs:
+      issue_number:
+        required: true
+        type: number
+      repo_name:
+        required: true
+        type: string
+
+jobs:
+  sync-urgency:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      projects: write
+    steps:
+      - name: Extract urgency and update project field
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const projectNumber = 17
+            const org = 'quintel'
+            const issue = context.payload.issue
+            const body = issue.body || ''
+
+            // Try to find urgency selection
+            const match = body.match(/Urgency \/ Impact\s*\*\*([^\n]*)\*\*/i)
+            if (!match) {
+              console.log('No urgency found in issue body.')
+              return
+            }
+            const urgency = match[1].trim()
+            console.log(`Found urgency: ${urgency}`)
+
+            // Get project by number
+            const { data: projects } = await github.graphql(`
+              query($org: String!) {
+                organization(login: $org) {
+                  projectsV2(first: 50) {
+                    nodes { id, number, title }
+                  }
+                }
+              }
+            `, { org })
+
+            const project = projects.organization.projectsV2.nodes.find(p => p.number === projectNumber)
+            if (!project) throw new Error('Project not found.')
+
+            // Get the field ID for "Urgency"
+            const { organization } = await github.graphql(`
+              query($org: String!, $pid: ID!) {
+                organization(login: $org) {
+                  projectV2(id: $pid) {
+                    fields(first: 50) {
+                      nodes { id, name }
+                    }
+                  }
+                }
+              }
+            `, { org, pid: project.id })
+
+            const field = organization.projectV2.fields.nodes.find(f => f.name === "Urgency")
+            if (!field) throw new Error('Urgency field not found.')
+
+            // Add the issue to the project
+            const { addItem } = await github.graphql(`
+              mutation($project: ID!, $issue: ID!) {
+                addProjectV2ItemById(input: {projectId: $project, contentId: $issue}) {
+                  item { id }
+                }
+              }
+            `, { project: project.id, issue: issue.node_id })
+
+            // Set the project field value
+            await github.graphql(`
+              mutation($item: ID!, $field: ID!, $value: String!) {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: "${project.id}",
+                  itemId: $item,
+                  fieldId: $field,
+                  value: { singleSelectOptionId: $value }
+                }) {
+                  projectV2Item { id }
+                }
+              }
+            `, {
+              item: addItem.addProjectV2ItemById.item.id,
+              field: field.id,
+              value: urgency
+            })
