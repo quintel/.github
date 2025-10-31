@@ -10,9 +10,9 @@ on:
       repo_name:
         required: true
         type: string
-      # issue_body:
-      #   required: true
-      #   type: string
+      issue_body:
+        required: true
+        type: string
 
 jobs:
   sync-urgency:
@@ -27,7 +27,7 @@ jobs:
             const projectNumber = 17
             const org = 'my-org'
             const issue = context.payload.issue
-            const body = issue.body || ''
+            const body = inputs.issue_body || ''
 
             // Try to find urgency selection
             const match = body.match(/Urgency \/ Impact\s*\*\*([^\n]*)\*\*/i)
