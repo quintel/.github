@@ -9,6 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
+        ### Enter issue information
         Thanks for reporting a UI issue! Please fill out the details below so we can fix it quickly.
 
   - type: input
@@ -44,7 +45,7 @@ body:
   - type: textarea
     id: steps
     attributes:
-      label: "🔍 Steps to Reproduce"
+      label: "Steps to Reproduce"
       description: "Please list the steps so we can see the issue ourselves."
       placeholder: |
         1. Go to '...'
@@ -52,6 +53,10 @@ body:
         3. See error
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: "### Optional context"
 
   - type: input
     id: url
@@ -63,7 +68,7 @@ body:
   - type: textarea
     id: screenshot
     attributes:
-      label: "📸 Screenshots or Videos"
+      label: "Screenshots or Videos"
       description: "If possible, add a screenshot or video to help visualize the issue."
       placeholder: "Drag and drop or paste your image/video here"
 
