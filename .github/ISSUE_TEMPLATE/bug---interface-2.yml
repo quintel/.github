@@ -2,9 +2,13 @@ name: "Interface Bug Report"
 description: Report a visual or interaction bug in the user interface
 title: "my bug"
 type: bug
-projects: "quintel/17"
+projects:
+  - quintel/17
 labels: ["ui"]
 assignees: []
+projects_fields:
+  quintel/17:
+    Urgency: urgency
 body:
   - type: markdown
     attributes:
@@ -26,10 +30,12 @@ body:
       label: "Urgency / Impact"
       description: "How severe is the issue?"
       options:
-        - Minor (cosmetic, typo)
-        - Moderate (annoying but usable)
-        - Critical (blocks usage or breaks workflow)
-      default: 1
+        - Nice to Have
+        - Low
+        - Medium
+        - High
+        - Critical
+      default: Low
 
   - type: textarea
     id: description
@@ -71,9 +77,9 @@ body:
   - type: textarea
     id: screenshot
     attributes:
-      label: "Screenshots or Videos"
+      label: "Screenshots"
       description: "If possible, add a screenshot or video to help visualize the issue."
-      placeholder: "Drag and drop or paste your image/video here"
+      placeholder: "Drag and drop or paste your image here"
 
   - type: textarea
     id: other
