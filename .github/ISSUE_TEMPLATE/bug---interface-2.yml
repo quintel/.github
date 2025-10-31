@@ -6,9 +6,6 @@ projects:
   - quintel/17
 labels: ["ui"]
 assignees: []
-projects_fields:
-  quintel/17:
-    Urgency: urgency
 body:
   - type: markdown
     attributes:
