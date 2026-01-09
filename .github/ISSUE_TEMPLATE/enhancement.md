@@ -1,38 +1,21 @@
 ---
 name: Enhancement
-about: Suggest an improvement to existing functionality
+about: Suggest an enhancement - Delete anything not relevant to the Issue
 title: ""
 type: Enhancement
 assignees: ''
 
 ---
 
-## Description
+##### Context
 
-> **Describe the enhancement here, what is the motivation...**
 
----
+#### Proposed Improvement
 
-## Current Behavior
 
-> **How does it work now...**
+#### Implementation Ideas
 
----
 
-## Proposed Improvement
-
-> **How should it work...**
-
----
-
-## Implementation Ideas
-
-> **Describe potential implementation approaches...**
-
----
-
-## Success Criteria
-
-> **How would you measure the success of this enhancement?**
+#### Success Criteria
 
 - [ ]
