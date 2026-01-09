@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-## Context
+#### Context
 
 
-### Steps to Reproduce
+##### Steps to Reproduce
 
 
-## Proposed solutions
+##### Proposed solutions
