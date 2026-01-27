@@ -1,21 +1,19 @@
 ---
 name: Enhancement
-about: Suggest an enhancement - Delete anything not relevant to the Issue
+about: Suggest an enhancement - Delete anything not relevant to the issue
 title: ""
 type: Enhancement
 assignees: ''
 
 ---
 
-##### Context
+#### Context
 
 
-#### Proposed Improvement
+#### Current shortcoming
 
 
-#### Implementation Ideas
+#### Proposed enhancement
 
 
-#### Success Criteria
-
-- [ ]
+#### Success criteria
