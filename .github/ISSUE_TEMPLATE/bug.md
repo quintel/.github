@@ -1,16 +1,14 @@
 ---
 name: Bug
-about: Report a bug - Delete anything not relevant to the Issue
+about: Report a bug - Delete anything not relevant to the issue
 title: ""
 type: Bug
 assignees: ''
 
 ---
 
-## Context
+#### Context
 
+#### Steps to reproduce
 
-### Steps to Reproduce
-
-
-## Proposed solutions
+#### Proposed solution
