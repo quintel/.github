@@ -1,6 +1,6 @@
 ---
 name: Bug
-about: Report a bug - Delete anything not relevant to the issue
+about: Report a bug - Fill in the template and delete anything not relevant
 title: ""
 type: Bug
 assignees: ''
