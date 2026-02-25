@@ -1,20 +1,15 @@
-## Description
+#### Context
 
-Please include a summary of the changes and the related issue.
+#### Implemented changes
 
-## Type of change
+#### Related
 
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Enhancement
-- [ ] Documentation
+Closes issue ...
+
+Goes with pull requests ...
 
 ## Checklist
 
 - [ ] I have tested these changes
 - [ ] I have updated documentation as needed
 - [ ] I have tagged the relevant people for review
-
-## Related Issues
-
-Closes #
