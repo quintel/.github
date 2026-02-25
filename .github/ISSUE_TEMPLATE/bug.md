@@ -11,4 +11,6 @@ assignees: ''
 
 #### Steps to reproduce
 
+Version (e.g. production/2025-01):
+
 #### Proposed solution
