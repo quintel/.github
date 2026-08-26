@@ -9,6 +9,8 @@ assignees: ''
 
 #### Context
 
+#### Issue
+
 #### Steps to reproduce
 
 Version (e.g. production/2025-01):
